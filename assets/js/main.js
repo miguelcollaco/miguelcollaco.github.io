@@ -1,5 +1,5 @@
 // typed js
-const typed = new Typed(".typing", {
+new Typed(".typing", {
     strings: ["computer science student", "tech enthusiast"],
     loop: true,
     typeSpeed: 80,
@@ -28,41 +28,35 @@ const themeToggle2 = document.querySelector("#about-title");
 let currentTheme = 0;
 [themeToggle,themeToggle2].forEach(item => {
     item.addEventListener("click", () => {
-        currentTheme++;
-        if (currentTheme === themes.length) currentTheme = 0;
+        if (++currentTheme === themes.length) currentTheme = 0;
         root.style.setProperty("--main-accent", themes[currentTheme]);
     });
 });
 
 // Title
-let fwd = true;
-function title(val){
-    const title = "Miguel Collaço", speed = 250;
+const title = "Miguel Collaço", speed = 250;
+async function titleAnim(val = 0) {
     let pos = val;
-    const le = title.length;
+    length = title.length;
     let scroll;
-    if (fwd) {
-        if (pos < le) {
-            pos = pos + 1;
-            scroll = title.substr(0, pos);
-            document.title = scroll;
-            setTimeout(`title(${pos})`, speed);
-        } else {
-            fwd = false
-            setTimeout(`title(${pos})`, speed);
-        }
+    if (pos < length) {
+        pos += 1;
+        scroll = title.substring(0, pos);
+        document.title = scroll;
+        setTimeout(`titleAnim(${pos})`, speed);
     } else {
-        if (pos > 0) {
-            pos = pos - 1;
-            let ale = le - pos;
-            scroll = title.substr(ale, le);
-            document.title = scroll;
-            setTimeout(`title(${pos})`, speed);
-        } else {
-            fwd = true;
-            setTimeout(`title(${pos})`, speed);
-        }
+        document.title = '﻿';
+        await new Promise(r => setTimeout(r, 1000));
+        document.title = 'Miguel Collaço';
+        await new Promise(r => setTimeout(r, 1000));
+        document.title = '﻿';
+        await new Promise(r => setTimeout(r, 1000));
+        document.title = 'Miguel Collaço';
+        await new Promise(r => setTimeout(r, 1000));
+        document.title = '﻿';
+        await new Promise(r => setTimeout(r, 1000));
+        titleAnim(0);
     }
 }
-title(0);
+titleAnim();
 document.addEventListener('contextmenu', event => event.preventDefault());
