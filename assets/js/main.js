@@ -34,7 +34,7 @@ let currentTheme = 0;
 });
 
 // Title
-const title = "Miguel Collaço", speed = 250;
+const title = "Miguel Collaço", speed = 200;
 async function titleAnim(val = 0) {
     let pos = val;
     length = title.length;
@@ -46,15 +46,15 @@ async function titleAnim(val = 0) {
         setTimeout(`titleAnim(${pos})`, speed);
     } else {
         document.title = '﻿';
-        await new Promise(r => setTimeout(r, 1000));
+        await new Promise(r => setTimeout(r, 500));
         document.title = 'Miguel Collaço';
-        await new Promise(r => setTimeout(r, 1000));
+        await new Promise(r => setTimeout(r, 500));
         document.title = '﻿';
-        await new Promise(r => setTimeout(r, 1000));
+        await new Promise(r => setTimeout(r, 500));
         document.title = 'Miguel Collaço';
-        await new Promise(r => setTimeout(r, 1000));
+        await new Promise(r => setTimeout(r, 500));
         document.title = '﻿';
-        await new Promise(r => setTimeout(r, 1000));
+        await new Promise(r => setTimeout(r, 500));
         titleAnim(0);
     }
 }
