@@ -34,7 +34,7 @@ let currentTheme = 0;
 });
 
 // Title
-const title = "Miguel Collaço", speed = 200;
+const title = "Miguel Collaço", speed = 250;
 async function titleAnim(val = 0) {
     let pos = val;
     length = title.length;
